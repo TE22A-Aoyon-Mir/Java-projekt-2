@@ -17,13 +17,15 @@ public class App {
 
             }
             else if(val==2){
-                
+                System.out.println("\nHär är lediga platserna: ");
+                break;
             }
             else if(val==3){
 
             }
             else if(val==4){
-            
+            System.out.println("Bokningssystemet avslutas");
+            continue;
             }
             else{
             System.out.println("Obs ange ditt val mellan 1-4");
