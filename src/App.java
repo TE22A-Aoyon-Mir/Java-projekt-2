@@ -28,7 +28,7 @@ public class App {
                     boka();
                     break;
                 case 2:
-                    
+                    ledigaPlatser();
                     break;
                 case 3:
                     
@@ -91,5 +91,15 @@ public class App {
                 }
             }
         }
+    }
+
+    static void ledigaPlatser() {
+        System.out.println("\nLediga platser:");
+        for (int i = 0; i < plats.length; i++) {
+            if (plats[i] == 0) {
+                System.out.println("Plats " + i + " är ledig");
+            }
+        }
+        System.out.println();
     }
 }
