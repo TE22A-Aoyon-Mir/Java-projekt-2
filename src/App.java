@@ -31,7 +31,7 @@ public class App {
                     ledigaPlatser();
                     break;
                 case 3:
-                    
+                    vinst();
                     break;
                 case 4:
                     System.out.println("\nBokningssystemet avslutas\n");
@@ -101,5 +101,17 @@ public class App {
             }
         }
         System.out.println();
+    }
+
+    static void vinst() {
+        double totalVinst = 0;
+        double platsPris = 299.90;
+
+        for (int i = 0; i < plats.length; i++) {
+            if (plats[i] != 0) {
+                totalVinst += platsPris;
+            }
+        }
+        System.out.println("\nTotal vinst: " + totalVinst + " kr\n");
     }
 }
