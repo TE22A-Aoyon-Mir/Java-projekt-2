@@ -11,7 +11,7 @@ public class App {
         Scanner tangentbord = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Hej! \n\nVälkommen till buss bokningssystem \n\n1. Boka \n2. Lediga platser \n3. Vinst \n4. Hitta bokning \n5. Avsluta \n\nAnge ditt val: ");
+            System.out.println("Hej! \n\nVälkommen till buss bokningssystem \n\n1. Boka \n2. Lediga platser \n3. Vinst \n4. Hitta bokning \n5. Ta bort bokning \n6. Avsluta \n\nAnge ditt val: ");
 
             int val = 0;
 
@@ -37,6 +37,9 @@ public class App {
                     hittaBokning();
                     break;
                 case 5:
+                    taBortBokning();
+                    break;
+                case 6:
                     System.out.println("\nBokningssystemet avslutas\n");
                     tangentbord.close();
                     System.exit(0);
@@ -146,4 +149,43 @@ public class App {
             return;
         }
     }
+
+    static void taBortBokning() {
+        Scanner tangentbord = new Scanner(System.in);
+    
+        System.out.println("\nAnge födelsedatum i ååååmmdd för att ta bort bokning: ");
+        int söktFödelsedatum = 0;
+    
+        try {
+            söktFödelsedatum = tangentbord.nextInt();
+        } catch (Exception e) {
+            System.out.println("OBS! Ange ditt födelsedatum i siffror.");
+            return;
+        }
+    
+        boolean bokningHittad = false;
+    
+        for (int i = 0; i < plats.length; i++) {
+            if (plats[i] == söktFödelsedatum) {
+                System.out.println("\nBokning hittad för födelsedatum " + söktFödelsedatum + " på plats " + i);
+                System.out.println("Vill du ta bort denna bokning? (ja/nej): ");
+                String svar = tangentbord.next();
+    
+                if (svar.equalsIgnoreCase("ja")) {
+                    plats[i] = 0;
+                    System.out.println("\nBokning borttagen för födelsedatum " + söktFödelsedatum + " på plats " + i);
+                } else {
+                    System.out.println("\nBokning för födelsedatum " + söktFödelsedatum + " på plats " + i + " behålls.");
+                }
+                bokningHittad = true;
+                return;
+            }
+        }
+    
+        if (!bokningHittad) {
+            System.out.println("\nIngen bokning hittades för födelsedatum " + söktFödelsedatum);
+            return;
+        }
+    }
+    
 }
