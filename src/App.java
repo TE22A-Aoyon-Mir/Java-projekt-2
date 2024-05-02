@@ -1,3 +1,9 @@
+/*
+Författare: Aoyon Mir
+
+Den här koden är en buss boknings system där man kan bland annat boka platser, hitta och ta bort det och beräkna vinst.
+ */
+
 import java.util.Scanner;
 
 public class App {
@@ -6,6 +12,9 @@ public class App {
         start();
     }
 
+    /*Det är en metod som hanterar huvudmenyn för bokningssystemet.
+    Den låter användaren välja olika alternativ som att boka en plats, visa lediga platser, beräkna vinst osv.
+    */
     static void start() {
 
         Scanner tangentbord = new Scanner(System.in);
@@ -49,6 +58,10 @@ public class App {
         }
     }
 
+    /*
+    Det är en metod för att genomföra en bokning. 
+    Den tar användarens födelsedatum som input och ber användaren att ange betalning. Om betalningen är tillräcklig bokas platsen och födelsedatumet sparas i plats arrayen.
+     */
     static void boka() {
         Scanner tangentbord = new Scanner(System.in);
 
@@ -99,6 +112,9 @@ public class App {
         }
     }
 
+    /*
+    Det är en metod som skriver ut de lediga platserna i bussen genom att gå över plats arrayen och kontrollera om värdet är 0.
+     */
     static void ledigaPlatser() {
         System.out.println("\nLediga platser:");
         for (int i = 0; i < plats.length; i++) {
@@ -109,6 +125,10 @@ public class App {
         System.out.println();
     }
 
+    /*
+    En metod för att beräkna den totala vinsten från alla bokningar.
+    Den multiplicerar antalet bokade platser med priset för varje plats.
+     */
     static void vinst() {
         double totalVinst = 0;
         double platsPris = 299.90;
@@ -121,6 +141,10 @@ public class App {
         System.out.println("\nTotal vinst: " + totalVinst + " kr\n");
     }
 
+    /*
+    En metod för att söka efter en bokning baserat på användarens födelsedatum.
+    Den loopar igenom plats arrayen och kontrollerar om födelsedatumet matchar det sökta.
+     */
     static void hittaBokning() {
         Scanner tangentbord = new Scanner(System.in);
 
@@ -150,6 +174,10 @@ public class App {
         }
     }
 
+    /*
+    En metod för att ta bort en bokning baserat på användarens födelsedatum.
+    Den loopar igenom plats arrayen för att hitta den matchande bokningen och frågar användaren om de vill ta bort den.
+     */
     static void taBortBokning() {
         Scanner tangentbord = new Scanner(System.in);
     
