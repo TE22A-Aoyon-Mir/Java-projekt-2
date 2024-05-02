@@ -11,8 +11,8 @@ public class App {
         Scanner tangentbord = new Scanner(System.in);
 
         while (true) {
-            System.out.println(
-                "Hej! \n\nVälkommen till buss bokningssystem \n\n1. Boka \n2. Lediga platser \n3. Vinst \n4. Avsluta \n\nAnge ditt val: ");
+            System.out.println("Hej! \n\nVälkommen till buss bokningssystem \n\n1. Boka \n2. Lediga platser \n3. Vinst \n4. Hitta bokning \n5. Avsluta \n\nAnge ditt val: ");
+
             int val = 0;
 
             try {
@@ -34,6 +34,9 @@ public class App {
                     vinst();
                     break;
                 case 4:
+                    hittaBokning();
+                    break;
+                case 5:
                     System.out.println("\nBokningssystemet avslutas\n");
                     tangentbord.close();
                     System.exit(0);
@@ -113,5 +116,34 @@ public class App {
             }
         }
         System.out.println("\nTotal vinst: " + totalVinst + " kr\n");
+    }
+
+    static void hittaBokning() {
+        Scanner tangentbord = new Scanner(System.in);
+
+            System.out.println("\nAnge födelsedatum i ååååmmdd för att söka efter bokning: ");
+        int söktFödelsedatum = 0;
+        
+        try {
+            söktFödelsedatum = tangentbord.nextInt();
+        } catch (Exception e) {
+            System.out.println("OBS! Ange ditt födelsedatum i siffror.");
+            return;
+        }
+
+        boolean bokningHittad = false;
+        
+        for (int i = 0; i < plats.length; i++) {
+            if (plats[i] == söktFödelsedatum) {
+                System.out.println("\nBokning hittad för födelsedatum " + söktFödelsedatum + " på plats " + i + "\n");
+                bokningHittad = true;
+                return;
+            }
+        }
+        
+        if (!bokningHittad) {
+            System.out.println("\nIngen bokning hittades för födelsedatum " + söktFödelsedatum + "\n");
+            return;
+        }
     }
 }
